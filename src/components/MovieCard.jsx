@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 
 import { useNavigate } from "react-router-dom";
 import { Card } from "@mui/material";
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 const MovieInfo = ({ name, value }) => (
   <div className={`movie__${name}`}>
@@ -25,7 +26,8 @@ const MovieCard = ({ movies, setMovies }) => {
       {movies.map((movie) => {
         return (
           <div className="movie">
-            <img src={movie.Poster} width={200} height={400} />
+            <FavoriteBorderIcon className="love-heart"/>
+            <img src={movie.Poster} width={200} height={300} />
 
             <h2 className="movie__title">{movie.title}</h2>
 
@@ -50,36 +52,7 @@ const MovieCard = ({ movies, setMovies }) => {
           </div>
         );
       })}
-      {/* {movies.map((movie) => {
-        return (
-          <Card
-            key={movie.id}
-            sx={{ maxWidth: 345 }}
-            className="cardMedia"
-            onClick={() => handleView(movie.id)}
-          >
-            <CardMedia
-              sx={{ height: 140 }}
-              image={movie.Image}
-              title={movie.Title}
-              key={movie.id}
-            />
-
-            <CardContent>
-              <Typography gutterBottom variant="h6" component="div">
-                {movie.Title}
-              </Typography>
-
-              <Typography variant="body2" color="text.secondary">
-                {movie.Plot}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                {movie.size} square feet
-              </Typography>
-            </CardContent>
-          </Card>
-        );
-      })} */}
+   
     </>
   );
 };
