@@ -33,27 +33,24 @@ export default function Featured({ type }) {
     <Loading />;
   }
   return (
+ 
     <div className="featured">
-      <img src={featured.Image} alt="" />
-      <div className="info">
-        <h1>{featured.Title}</h1>
-        <span className="desc">{featured.Plot}</span>
+    <img src={featured.Image} alt="Snow" className=""/>
+    <div className="bottom-left">
+    <div className="info">
+         <h1>{featured.Title}</h1>
+         <span className="desc">{featured.Plot}</span>
         <div className="buttons">
-          <button className="play">
-            <PlayCircleFilledWhiteOutlinedIcon />
-            <span>Watch Trailer</span>
-          </button>
-          <button className="more">
-            <InfoOutlinedIcon />
-            <span>Info</span>
-          </button>
-        </div>
-      </div>
-      
-      
-      
-     
+           <button className="play">
+             <PlayCircleFilledWhiteOutlinedIcon />
+             <span>Watch Trailer</span>
+           </button>
+           
+    </div>
     </div>
    
+  </div> 
+  </div> 
+ 
   );
 }
