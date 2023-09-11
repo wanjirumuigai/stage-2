@@ -27,19 +27,17 @@ const MovieCard = ({ movies, setMovies }) => {
         return (
           <div className="movie">
             <FavoriteBorderIcon className="love-heart"/>
-            <img src={movie.Poster} width={200} height={300} />
+            <img src={movie.Poster} width={200} height={300} />            
 
-            <h2 className="movie__title">{movie.title}</h2>
-
-            <span className="movie__description">{movie.description}</span>
+          
 
             <div className="movie__infos">
               <p>{movie.Released}</p>
-              <p>{movie.Title}</p>
+              <h2>{movie.Title}</h2>
             </div>
 
             <div className="movie__imdb">
-              {/* <Rating rating={Math.round(movie.rating)} /> */}
+              
               <a
                 href={movie.imdbLink}
                 className="movie__imdb-button"
@@ -48,6 +46,9 @@ const MovieCard = ({ movies, setMovies }) => {
                 {" "}
                 IMDb{" "}
               </a>
+              <p>{movie.Genre}</p>
+
+              
             </div>
           </div>
         );

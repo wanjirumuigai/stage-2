@@ -109,13 +109,15 @@
         margin-left: 5px;
       }
     
-  
+  .movie h2{
+    text-wrap:wrap;
+  }
 
 
 
 .cards {
   display: grid;
-  grid-template-columns: auto auto auto auto; 
+  grid-template-columns: 12% 12% 12% 12%; 
   gap: 3rem;
   justify-content: center;
   flex-wrap: wrap;
