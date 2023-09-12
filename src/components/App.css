@@ -51,15 +51,15 @@
 } */
 .love-heart {
   position:absolute;
-  
- 
+
+
   color: red;
 }
 
 .featured img {
   width: 100%;
   height: 90vh;
-} 
+}
 
 .info {
   width: 35%;
@@ -108,7 +108,7 @@
       span {
         margin-left: 5px;
       }
-    
+
   .movie h2{
     text-wrap:wrap;
   }
@@ -117,11 +117,28 @@
 
 .cards {
   display: grid;
-  grid-template-columns: 12% 12% 12% 12%; 
+  grid-template-columns: 12% 12% 12% 12%;
   gap: 3rem;
   justify-content: center;
   flex-wrap: wrap;
   list-style: none;
   margin: 0;
   padding: 10px;
+}
+
+.moviebox-card {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10%;
+  margin-left: 10%;
+  gap: 3rem;
+}
+.moviebox {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: red;
+  text-align: center;
+
+
 }

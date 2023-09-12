@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 
 import { useNavigate } from "react-router-dom";
 import { Card } from "@mui/material";
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
 const MovieInfo = ({ name, value }) => (
   <div className={`movie__${name}`}>
@@ -26,10 +26,10 @@ const MovieCard = ({ movies, setMovies }) => {
       {movies.map((movie) => {
         return (
           <div className="movie">
-            <FavoriteBorderIcon className="love-heart"/>
-            <img src={movie.Poster} width={200} height={300} />            
-
-          
+            <div className="card">
+              <FavoriteBorderIcon className="love-heart" />
+            </div>
+            <img src={movie.Poster} width={200} height={300} />
 
             <div className="movie__infos">
               <p>{movie.Released}</p>
@@ -37,7 +37,6 @@ const MovieCard = ({ movies, setMovies }) => {
             </div>
 
             <div className="movie__imdb">
-              
               <a
                 href={movie.imdbLink}
                 className="movie__imdb-button"
@@ -47,13 +46,10 @@ const MovieCard = ({ movies, setMovies }) => {
                 IMDb{" "}
               </a>
               <p>{movie.Genre}</p>
-
-              
             </div>
           </div>
         );
       })}
-   
     </>
   );
 };
