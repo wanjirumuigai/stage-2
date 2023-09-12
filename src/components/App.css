@@ -142,3 +142,21 @@
 
 
 }
+.play-quizzes {
+  text-align: left;
+
+  padding: 10px;
+  background-color: #e1dddd;
+  border-color: #ecb9b9;
+  border-radius: 15px;
+  margin: 20px;
+
+}
+.quiz-btn {
+  border-radius: 20px;
+  background-color: #d5acac;
+  color: rgb(184, 73, 73);
+  text-align: center;
+  margin-left: 20px;
+
+}

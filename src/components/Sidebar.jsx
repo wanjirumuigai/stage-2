@@ -10,6 +10,8 @@ import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
 import VideocamOutlinedIcon from "@mui/icons-material/VideocamOutlined";
 
 import { CalendarMonthOutlined, LiveTv } from "@mui/icons-material";
+import { Box, Button, Card, CardActionArea } from "@mui/material";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 const drawerWidth = 240;
 
@@ -60,6 +62,19 @@ export default function Sidebar() {
             <ListItemText primary="Upcoming" />
           </ListItem>
         </List>
+
+        <div className="play-quizzes">
+          <h3>Play movie quizes and earn free tickets</h3>
+          <p>50k people are playing now</p>
+          <button className="quiz-btn">Start Playing</button>
+        </div>
+
+        <ListItem>
+          <ListItemIcon>
+            <LogoutIcon />
+          </ListItemIcon>
+          <ListItemText primary="Log Out" />
+        </ListItem>
       </StyledDrawer>
     </div>
   );
