@@ -161,11 +161,16 @@
 
 }
 .one-movie-card {
-  display: grid;
+  /* display: grid;
   grid-template-rows: 449px 150px 183px 100px;
-  grid-template-columns: 1198px 360px;
-  margin-left: 30px;
+  grid-template-columns: 1198px 360px; */
+  margin-left: 30%;
   margin-top: 10px;
+  display: grid;
+  gap: 3rem;
+}
+.item-1 img {
+  object-fit: fill;
 }
 .item-1 {
   grid-row: 1/2;
@@ -196,4 +201,32 @@
   grid-row: 4/5;
   grid-column: 1/2;
   background-color: #d49331;
+}
+.movie-details {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-between; */
+}
+.one-movie-buttons  {
+  display: flex;
+  flex-direction: row;
+}
+.one-movie-buttons  button {
+  width: 250px;
+  margin-top: 0;
+}
+#watch-more {
+  margin-top: 10px;
+}
+.movie-director {
+  display: flex;
+  flex-direction: row;
+}
+.images-div {
+  width: 90%;
+  height: 50%;
+  border-color: grey;
+  border-style: solid;
+  background-color: #c14fc1;
+  margin-top: 5px;
 }
