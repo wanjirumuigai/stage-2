@@ -12,6 +12,7 @@ const MovieCard = ({ movies, setMovies }) => {
   const [genres, setGenre] = useState([]);
 
   function handleView(id) {
+    console.log(id);
     navigate(`/movie/${id}`);
   }
   return (
@@ -24,7 +25,6 @@ const MovieCard = ({ movies, setMovies }) => {
             onClick={() => handleView(movie.id)}
             key={movie.id}
           >
-            {console.log(movie)}
             <FavoriteBorderIcon className="love-heart" />
 
             <img

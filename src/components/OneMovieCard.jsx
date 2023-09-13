@@ -8,7 +8,7 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { BsDot } from "react-icons/bs";
+
 import { AiOutlineStar } from "react-icons/ai";
 import { useParams, useNavigate } from "react-router-dom";
 import Sidebar from "./Sidebar";
@@ -50,20 +50,16 @@ const OneMovieCard = () => {
     return (
       <>
         <h3>Loading ...</h3>
-        <div className="loader">
-          <span id="span"></span>
-          <span id="span"></span>
-          <span id="span"></span>
-          <span id="span"></span>
-        </div>
+        <div className="loader"></div>
       </>
     );
   }
+  console.log(movie);
 
   return (
     <>
       <Sidebar />
-      <div className="one-movie-card">
+      <div className=" w-full mx-2 mt-5 md:ml-80">
         <Card sx={{ maxWidth: 900 }}>
           <CardMedia
             component="img"
@@ -74,41 +70,49 @@ const OneMovieCard = () => {
         </Card>
         <Card sx={{ maxWidth: 900 }}>
           <CardContent>
-            <div>
-              <Typography
-                gutterBottom
-                variant="h5"
-                component="div"
-                className="movie-details"
-              >
+            <div className="block  md:flex md:flex-row justify-between">
+              <div className="block md:flex md:flex-row justify-between w-1/2">
                 <h5 data-testid="movie-title">{movie.original_title} </h5>
-                <BsDot />
                 <h5 data-testid="movie-release-date">
                   {date.getUTCFullYear()}
                 </h5>
-                <BsDot />
                 <h5 data-testid="movie-runtime">{movie.runtime}</h5>
-                {movie.rated} <BsDot />
+                {movie.rated}
                 {genres.map((item) => {
-                  return <button key={item.id}>{item.name}</button>;
+                  return (
+                    <button
+                      className="bg-transparent mt-0 px-5 mr-2 mb-2 text-sm hover:bg-red-700 hover:text-white text-red-600 font-light px-2 rounded-full"
+                      key={item.id}
+                    >
+                      {item.name}
+                    </button>
+                  );
                 })}
-              </Typography>
-
-              <Typography>
-                <AiOutlineStar /> | 350k
-              </Typography>
+              </div>
+              <div className="flex flex-col md:flex-row ">
+                <AiOutlineStar className="tx-sm" /> | {movie.popularity}
+              </div>
             </div>
-            <div className="one-movie-buttons">
-              <Typography
-                variant="body1"
-                color="text.secondary"
-                data-testid="movie-overview"
-              >
-                {movie.overview}
-              </Typography>
-              <div>
-                <button>See Showtimes</button>
-                <button id="watch-more">Watch More Movies</button>
+            <div className="flex flex-col md:flex-row">
+              <div className="w-full md:w-2/3">
+                <Typography
+                  variant="body1"
+                  color="text.secondary"
+                  data-testid="movie-overview"
+                >
+                  {movie.overview}
+                </Typography>
+              </div>
+              <div className="w-full md:w-1/3">
+                <button className="bg-red-600 text-white w-full md:w-3/4 mt-0 px-5 mr-2 mb-2 text-sm hover:border-solid hover:bg-white hover:text-red-600 hover:border-2 hover:border-red-600 font-light px-2 rounded-full">
+                  See Showtimes
+                </button>
+                <button
+                  className="bg-transparent mt-0 px-5 w-full md:w-3/4 mr-2 mb-2 text-sm hover:bg-red-700  border-solid border-2 border-red-600 hover:text-white text-red-600 font-light px-2 rounded-full"
+                  id="watch-more"
+                >
+                  Watch More Movies
+                </button>
               </div>
             </div>
             <div className="movie-director">

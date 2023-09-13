@@ -26,7 +26,7 @@ const StyledDrawer = styled(Drawer)(({ theme }) => ({
 
 export default function Sidebar() {
   return (
-    <div className="sidebar">
+    <div className="sidebar hidden lg:block">
       <StyledDrawer variant="permanent" anchor="left">
         <div className="moviebox-card">
           <div className="moviebox">
