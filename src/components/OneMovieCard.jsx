@@ -10,28 +10,39 @@ import {
 import React, { useEffect, useState } from "react";
 import { BsDot } from "react-icons/bs";
 import { AiOutlineStar } from "react-icons/ai";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Sidebar from "./Sidebar";
 
 const OneMovieCard = () => {
   const [movie, setMovies] = useState([]);
   const [genres, setGenre] = useState([]);
+  const navigate = useNavigate();
 
   let { id } = useParams();
 
   const date_string = movie.release_date;
   const date = new Date(date_string);
+  const [errors, setErrors] = useState([]);
 
   useEffect(() => {
     fetch(
       `https://api.themoviedb.org/3/movie/${id}?api_key=d7bd4c29e3d9fc1a071c5d5a7cd4403b`
     )
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Invalid ID");
+        }
+        return res.json();
+      })
       .then((data) => {
         setMovies(data);
         setGenre(data.genres);
+      })
+      .catch((error) => {
+        // Redirect to the error page with the error message
+        navigate(`/error/${error.message}`);
       });
-  }, []);
+  }, [navigate]);
 
   return (
     <>

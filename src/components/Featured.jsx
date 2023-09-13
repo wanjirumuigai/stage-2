@@ -2,6 +2,7 @@ import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import PlayCircleFilledWhiteOutlinedIcon from "@mui/icons-material/PlayCircleFilledWhiteOutlined";
 import { useEffect, useState } from "react";
 import Loading from "./Loading";
+import { useNavigate } from "react-router-dom";
 
 import { PlayArrowRounded } from "@mui/icons-material";
 import "./App.css";
@@ -9,17 +10,26 @@ import "./App.css";
 export default function Featured() {
   const [featured, setFeatured] = useState([]);
   const [movies, setMovies] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch(
       "https://api.themoviedb.org/3/movie/615656?api_key=d7bd4c29e3d9fc1a071c5d5a7cd4403b"
     )
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Network error");
+        }
+        return res.json();
+      })
       .then((data) => {
         setFeatured(data);
-        console.log(data);
+      })
+      .catch((error) => {
+        // Redirect to the error page with the error message
+        navigate(`/error/${error.message}`);
       });
-  }, []);
+  }, [navigate]);
 
   if (!featured) {
     <Loading />;

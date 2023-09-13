@@ -5,6 +5,7 @@ import Sidebar from "./Sidebar";
 import OneMovieContainer from "./OneMovieContainer";
 import OneMovieCard from "./OneMovieCard";
 import { Routes, Route } from "react-router-dom";
+import ErrorPage from "./ErrorPage";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/movie/:id" element={<OneMovieCard />} />
+        <Route path="/error/:message" element={<ErrorPage />} />
       </Routes>
     </div>
   );
