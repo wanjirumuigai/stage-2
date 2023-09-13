@@ -11,6 +11,7 @@ export default function Featured() {
   const [featured, setFeatured] = useState([]);
   const [movies, setMovies] = useState([]);
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     fetch(
@@ -24,6 +25,7 @@ export default function Featured() {
       })
       .then((data) => {
         setFeatured(data);
+        setLoading(true);
       })
       .catch((error) => {
         // Redirect to the error page with the error message
@@ -31,8 +33,18 @@ export default function Featured() {
       });
   }, [navigate]);
 
-  if (!featured) {
-    <Loading />;
+  if (!loading) {
+    return (
+      <>
+        <h3>Loading ...</h3>
+        <div className="loader">
+          <span id="span"></span>
+          <span id="span"></span>
+          <span id="span"></span>
+          <span id="span"></span>
+        </div>
+      </>
+    );
   }
   return (
     <div className="featured">

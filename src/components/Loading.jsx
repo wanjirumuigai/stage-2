@@ -1,12 +1,15 @@
 function Loading() {
-    return (
-      <div className="loading">
-        <div className="loading-content">
-          <img src="logo.png" alt />
-          <i className="fa-solid fa-spinner"></i>
-        </div>
+  return (
+    <>
+      <h3>Loading ...</h3>
+      <div className="loader">
+        <span id="span"></span>
+        <span id="span"></span>
+        <span id="span"></span>
+        <span id="span"></span>
       </div>
-    );
-  }
-  
-  export default Loading;
+    </>
+  );
+}
+
+export default Loading;

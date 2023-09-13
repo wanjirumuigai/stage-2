@@ -17,6 +17,7 @@ const OneMovieCard = () => {
   const [movie, setMovies] = useState([]);
   const [genres, setGenre] = useState([]);
   const navigate = useNavigate();
+  const [loading, setLoaded] = useState(false);
 
   let { id } = useParams();
 
@@ -37,12 +38,27 @@ const OneMovieCard = () => {
       .then((data) => {
         setMovies(data);
         setGenre(data.genres);
+        setLoaded(true);
       })
       .catch((error) => {
         // Redirect to the error page with the error message
         navigate(`/error/${error.message}`);
       });
   }, [navigate]);
+
+  if (!loading) {
+    return (
+      <>
+        <h3>Loading ...</h3>
+        <div className="loader">
+          <span id="span"></span>
+          <span id="span"></span>
+          <span id="span"></span>
+          <span id="span"></span>
+        </div>
+      </>
+    );
+  }
 
   return (
     <>
