@@ -13,21 +13,22 @@ const MovieCard = ({ movies, setMovies }) => {
   const navigate = useNavigate();
   const [genres, setGenre] = useState([]);
 
-  function handleView(id) {
-    navigate(`/movie/${id}`);
-  }
+ 
   return (
     <>
       {movies.map((movie) => {
         return (
-          <Link>
+          <Link to={`/movie/${movie.id}`}>
+            
             <div
-              className="movie"
+              
               data-testid="movie-card"
-              onClick={() => handleView(movie.id)}
+              
               key={movie.id}
             >
-              <FavoriteBorderIcon className="love-heart" />
+                <div className="hover:bg-slate-300" onClick={(e) => e.stopPropagation()}>
+              <FavoriteBorderIcon className="love-heart hover:cursor-wait" />
+              </div>
 
               <img
                 data-testid="movie-poster"
@@ -35,29 +36,27 @@ const MovieCard = ({ movies, setMovies }) => {
                 width={300}
                 height={450}
               />
-              {console.log(movies)}
+              
               <div className="movie__infos">
                 <h2 className="font-bold" data-testid="movie-title">
                   {movie.title}
                 </h2>
               </div>
 
-              <div className="flex flex-row justify-between gap-1">
+              <div className="flex flex-row justify-between gap-1 w-10/12">
                 <div className="flex flex-row gap-2">
                   <SiImdb className=" bg-yellow-500 text-xl" />{" "}
                   <p className="text-xs">{movie.vote_average}</p>
                 </div>
                 <div className="flex flex-row gap-2">
-                  {/* <img
-                    className="text-sm"
-                    src="https://img.icons8.com/?size=2x&id=erXgYlZE3JhX&format=png"
-                  /> */}
+                 
                   <GiTomato className=" text-xl" />
-                  <p className="text-xs">${Math.round(movie.popularity)}%</p>
+                  <p className="text-xs">{Math.round(movie.popularity)}%</p>
                 </div>
               </div>
               <p data-testid="movie-release-date">{movie.release_date}</p>
             </div>
+            
           </Link>
         );
       })}

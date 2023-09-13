@@ -57,9 +57,10 @@ const OneMovieCard = () => {
   console.log(movie);
 
   return (
+   
     <>
       <Sidebar />
-      <div className=" w-full mx-2 mt-5 md:ml-80">
+      <div className=" w-full mx-2 mt-5 lg:ml-80">
         <Card sx={{ maxWidth: 900 }}>
           <CardMedia
             component="img"
@@ -70,26 +71,26 @@ const OneMovieCard = () => {
         </Card>
         <Card sx={{ maxWidth: 900 }}>
           <CardContent>
-            <div className="block  md:flex md:flex-row justify-between">
-              <div className="block md:flex md:flex-row justify-between w-1/2">
-                <h5 data-testid="movie-title">{movie.original_title} </h5>
+            <div className="block  md:flex md:flex-row md:justify-between">
+              <div className="block md:flex md:flex-row w-3/4 gap-4">
+                <h5 data-testid="movie-title">{movie.original_title} • </h5>
                 <h5 data-testid="movie-release-date">
-                  {date.getUTCFullYear()}
+                  {date.getUTCFullYear()} • 
                 </h5>
-                <h5 data-testid="movie-runtime">{movie.runtime}</h5>
+                <h5 data-testid="movie-runtime">{movie.runtime} • </h5>
                 {movie.rated}
                 {genres.map((item) => {
                   return (
-                    <button
-                      className="bg-transparent mt-0 px-5 mr-2 mb-2 text-sm hover:bg-red-700 hover:text-white text-red-600 font-light px-2 rounded-full"
+                    <p
+                      className="bg-transparent px-2 mt-0 text-sm hover:bg-red-700 hover:text-white text-red-600 font-light rounded-full"
                       key={item.id}
                     >
                       {item.name}
-                    </button>
+                    </p>
                   );
                 })}
               </div>
-              <div className="flex flex-col md:flex-row ">
+              <div className="flex flex-col md:flex-row">
                 <AiOutlineStar className="tx-sm" /> | {movie.popularity}
               </div>
             </div>

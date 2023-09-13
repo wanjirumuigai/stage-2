@@ -36,7 +36,9 @@
   left: 10%;
 } */
 .love-heart {
-  position:absolute;
+  position:relative;
+  top: 24px;
+  right: -133px;
 
 
   color: red;
