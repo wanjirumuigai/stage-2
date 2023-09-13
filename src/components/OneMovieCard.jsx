@@ -1,92 +1,105 @@
 import { StarBorder } from "@mui/icons-material";
-import { Button, Card, CardActions, CardContent, CardMedia, Typography } from "@mui/material";
+import {
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Typography,
+} from "@mui/material";
 import React, { useEffect, useState } from "react";
-import {BsDot} from 'react-icons/bs'
-import {AiOutlineStar} from "react-icons/ai"
+import { BsDot } from "react-icons/bs";
+import { AiOutlineStar } from "react-icons/ai";
+import { useParams } from "react-router-dom";
+import Sidebar from "./Sidebar";
 
 const OneMovieCard = () => {
   const [movie, setMovies] = useState([]);
-  const [genre, setGenre] = useState([])
+  const [genres, setGenre] = useState([]);
 
-  const url = "http://localhost:3000";
+  let { id } = useParams();
+
+  const date_string = movie.release_date;
+  const date = new Date(date_string);
 
   useEffect(() => {
-    fetch("http://localhost:3000/films/2")
+    fetch(
+      `https://api.themoviedb.org/3/movie/${id}?api_key=d7bd4c29e3d9fc1a071c5d5a7cd4403b`
+    )
       .then((res) => res.json())
       .then((data) => {
         setMovies(data);
-        setGenre(data.Genre.split(','))
+        setGenre(data.genres);
       });
   }, []);
-  
 
- 
   return (
-    <div className="one-movie-card">
-      {/* <div className="item-1">
-        <img src={movie.Image} />
-      </div>
-      <div className="item-2"></div>
-      <div className="item-3"></div>
-      <div className="item-4"></div>
-      <div className="item-5"></div>
-      <div className="item-6"></div> */}
-      <Card sx={{ maxWidth: 1000 }}>
-      <CardMedia
-        component="img"
-        alt="green iguana"
-        
-        image={movie.Image}
-      />
-      
-    </Card>
-    <Card sx={{ maxWidth: 1000 }}>
-    <CardContent >
-      <div >
-        
-        <Typography gutterBottom variant="h5" component="div" className="movie-details">
-        {movie.Title} <BsDot /> {movie.Year} <BsDot /> {movie.Rated} <BsDot /> {movie.Runtime} 
-        {genre.map((item) => {
-          return (
-            <button key={item}>{item}</button>
-          )
-        })}
+    <>
+      <Sidebar />
+      <div className="one-movie-card">
+        <Card sx={{ maxWidth: 900 }}>
+          <CardMedia
+            component="img"
+            alt={movie.original_title}
+            image={`https://image.tmdb.org/t/p/w500/${movie?.poster_path}`}
+            sx={{ maxWidth: 900, height: 450, objectFit: "fill" }}
+          />
+        </Card>
+        <Card sx={{ maxWidth: 900 }}>
+          <CardContent>
+            <div>
+              <Typography
+                gutterBottom
+                variant="h5"
+                component="div"
+                className="movie-details"
+              >
+                <h5 data-testid="movie-title">{movie.original_title} </h5>
+                <BsDot />
+                <h5 data-testid="movie-release-date">
+                  {date.getUTCFullYear()}
+                </h5>
+                <BsDot />
+                <h5 data-testid="movie-runtime">{movie.runtime}</h5>
+                {movie.rated} <BsDot />
+                {genres.map((item) => {
+                  return <button key={item.id}>{item.name}</button>;
+                })}
+              </Typography>
 
-        
-        </Typography>
-       
-        <Typography>
-        <AiOutlineStar /> | 350k
-        </Typography>
-      
-        </div> 
-        <div className="one-movie-buttons">
-        <Typography variant="body1" color="text.secondary">
-          
-        {movie.Plot}
-        </Typography>
-        <div>
-          <button>See Showtimes</button>
-          <button id="watch-more">Watch More Movies</button>
-        </div>
-        </div>
-        <div className="movie-director">
-          <div>
-        <p>Director: {movie.Director}</p>
-        <p>Writers: {movie.Writer}</p>
-        <p>Stars: {movie.Actors}</p>
-        </div>
-        <div className="images-div">
-          
-        </div>
-        </div>
-      </CardContent>
-      <CardActions>
-        <Button size="small">Top rated movie #65</Button>
-        <Button size="small">Awards 9 nominations </Button>
-      </CardActions>
-      </Card>
-    </div>
+              <Typography>
+                <AiOutlineStar /> | 350k
+              </Typography>
+            </div>
+            <div className="one-movie-buttons">
+              <Typography
+                variant="body1"
+                color="text.secondary"
+                data-testid="movie-overview"
+              >
+                {movie.overview}
+              </Typography>
+              <div>
+                <button>See Showtimes</button>
+                <button id="watch-more">Watch More Movies</button>
+              </div>
+            </div>
+            <div className="movie-director">
+              <div>
+                <p>Director: {movie.Director}</p>
+                <p>Writers: {movie.Writer}</p>
+                <p>Stars: {movie.Actors}</p>
+              </div>
+              <div className="images-div"></div>
+            </div>
+          </CardContent>
+          <CardActions>
+            <Button size="small">Top rated movie #65</Button>
+            <Button size="small">Awards 9 nominations </Button>
+          </CardActions>
+        </Card>
+      </div>
+    </>
   );
 };
 

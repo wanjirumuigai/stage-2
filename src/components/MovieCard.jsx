@@ -4,44 +4,39 @@ import CardMedia from "@mui/material/CardMedia";
 
 import Typography from "@mui/material/Typography";
 
-import { Link, useNavigate } from "react-router-dom";
-import { Card } from "@mui/material";
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-
-const MovieInfo = ({ name, value }) => (
-  <div className={`movie__${name}`}>
-    <span className="info__head">
-      {name.replace(/\b\w/g, (l) => l.toUpperCase())}
-    </span>
-    {value}
-  </div>
-);
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import { useNavigate } from "react-router-dom";
 
 const MovieCard = ({ movies, setMovies }) => {
+  const navigate = useNavigate();
   function handleView(id) {
-    console.log("test");
+    navigate(`/movie/${id}`);
   }
   return (
     <>
       {movies.map((movie) => {
         return (
-           
-          <div className="movie">
-            <FavoriteBorderIcon className="love-heart"/>
-          
-            <img src={movie.Poster} width={200} height={300} />   
-            
+          <div
+            className="movie"
+            data-testid="movie-card"
+            onClick={() => handleView(movie.id)}
+            key={movie.id}
+          >
+            <FavoriteBorderIcon className="love-heart" />
 
-
-          
+            <img
+              data-testid="movie-poster"
+              src={`https://image.tmdb.org/t/p/w500/${movie?.poster_path}`}
+              width={200}
+              height={300}
+            />
 
             <div className="movie__infos">
-              <p>{movie.Released}</p>
-              <h2>{movie.Title}</h2>
+              <p data-testid="movie-release-date">{movie.release_date}</p>
+              <h2 data-testid="movie-title">{movie.original_title}</h2>
             </div>
 
             <div className="movie__imdb">
-              
               <a
                 href={movie.imdbLink}
                 className="movie__imdb-button"
@@ -51,13 +46,10 @@ const MovieCard = ({ movies, setMovies }) => {
                 IMDb{" "}
               </a>
               <p>{movie.Genre}</p>
-
-              
             </div>
           </div>
         );
       })}
-   
     </>
   );
 };

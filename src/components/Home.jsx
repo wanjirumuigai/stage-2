@@ -11,21 +11,13 @@ const Home = () => {
   const [featured, setFeatured] = useState([]);
   const [movies, setMovies] = useState([]);
 
-  const url = "http://localhost:3000";
-
   useEffect(() => {
-    fetch("http://localhost:3000/films/1")
+    fetch(
+      "https://api.themoviedb.org/3/movie/top_rated?api_key=d7bd4c29e3d9fc1a071c5d5a7cd4403b"
+    )
       .then((res) => res.json())
       .then((data) => {
-        setFeatured(data);
-      });
-  }, []);
-
-  useEffect(() => {
-    fetch(`${url}/films`)
-      .then((res) => res.json())
-      .then((data) => {
-        setMovies(data);
+        setMovies(data.results.slice(0, 10));
       });
   }, []);
 
