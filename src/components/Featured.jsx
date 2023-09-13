@@ -53,7 +53,7 @@ export default function Featured() {
           <h1>{featured.original_title}</h1>
           <span className="desc">{featured.overview}</span>
           <div className="buttons">
-            <button className="play">
+            <button className="play max-w-max">
               <PlayCircleFilledWhiteOutlinedIcon />
               <span>Watch Trailer</span>
             </button>

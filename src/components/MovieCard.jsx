@@ -43,7 +43,7 @@ const MovieCard = ({ movies, setMovies }) => {
                 </h2>
               </div>
 
-              <div className="flex flex-row justify-between gap-1 w-10/12 lg:w-1/2 ">
+              <div className="flex flex-row justify-between gap-1 w-10/12 ">
                 <div className="flex flex-row gap-2">
                   <SiImdb className=" bg-yellow-500 text-xl" />{" "}
                   <p className="text-xs">{movie.vote_average}</p>
