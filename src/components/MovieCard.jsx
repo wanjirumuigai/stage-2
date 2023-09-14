@@ -7,7 +7,9 @@ import Typography from "@mui/material/Typography";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { Link, useNavigate } from "react-router-dom";
 import { SiImdb } from "react-icons/si";
-import { GiTomato } from "react-icons/gi";
+import tomato from "../images/tomato.png";
+
+import { MdOutlineArrowForwardIos } from "react-icons/md";
 
 const MovieCard = ({ movies, setMovies }) => {
   const navigate = useNavigate();
@@ -42,7 +44,7 @@ const MovieCard = ({ movies, setMovies }) => {
                   <p className="text-xs">{movie.vote_average}</p>
                 </div>
                 <div className="flex flex-row gap-2">
-                  <GiTomato className=" text-xl" />
+                  <img src={tomato} className=" text-xl" />
                   <p className="text-xs">80%</p>
                 </div>
               </div>
