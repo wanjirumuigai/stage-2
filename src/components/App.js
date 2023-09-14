@@ -6,11 +6,13 @@ import OneMovieContainer from "./OneMovieContainer";
 import OneMovieCard from "./OneMovieCard";
 import { Routes, Route } from "react-router-dom";
 import ErrorPage from "./ErrorPage";
+import Navbar from "./Navbar";
 
 function App() {
   return (
     <div>
       {/* <OneMovieContainer /> */}
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/movie/:id" element={<OneMovieCard />} />

@@ -18,20 +18,20 @@ const MovieCard = ({ movies, setMovies }) => {
       {movies.map((movie) => {
         return (
           <Link to={`/movie/${movie.id}`}>
-            <div data-testid="movie-card" key={movie.id}>
+            <div datatestid="movie-card" key={movie.id}>
               <div onClick={(e) => e.stopPropagation()}>
                 <FavoriteBorderIcon className="love-heart hover:bg-lime-300 " />
               </div>
 
               <img
-                data-testid="movie-poster"
+                datatestid="movie-poster"
                 src={`https://image.tmdb.org/t/p/w500/${movie?.poster_path}`}
                 width={300}
                 height={450}
               />
 
               <div className="movie__infos">
-                <h2 className="font-bold" data-testid="movie-title">
+                <h2 className="font-bold" datatestid="movie-title">
                   {movie.title}
                 </h2>
               </div>
@@ -47,8 +47,7 @@ const MovieCard = ({ movies, setMovies }) => {
                 </div>
               </div>
 
-              <p data-testid="movie-release-date">
-                Release Date (UTC):
+              <p datatestid="movie-release-date">
                 {new Date(movie.release_date).getUTCFullYear()}-
                 {new Date(movie.release_date).getUTCMonth() + 1}-
                 {new Date(movie.release_date).getUTCDate()}

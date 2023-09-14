@@ -6,6 +6,10 @@ import { useNavigate } from "react-router-dom";
 
 import { PlayArrowRounded } from "@mui/icons-material";
 import "./App.css";
+import Navbar from "./Navbar";
+import { Link } from "@mui/material";
+import imdb from "../images/imbd.png";
+import tomato from "../images/tomato.png";
 
 export default function Featured() {
   const [featured, setFeatured] = useState([]);
@@ -42,24 +46,35 @@ export default function Featured() {
     );
   }
   return (
-    <div className="featured">
-      <img
-        src={`https://image.tmdb.org/t/p/w500/${featured?.poster_path}`}
-        alt={featured.original_title}
-        className=""
-      />
-      <div className="bottom-left">
-        <div className="info">
-          <h1>{featured.original_title}</h1>
-          <span className="desc">{featured.overview}</span>
-          <div className="buttons">
-            <button className="play max-w-max">
-              <PlayCircleFilledWhiteOutlinedIcon />
-              <span>Watch Trailer</span>
-            </button>
+    <>
+      <div className="header">
+        <Navbar />
+        <div className="text-box">
+          <h1>
+            John Wich 3: <br />
+            Parabellum
+          </h1>
+          <div className="ratings">
+            <span>
+              <img src={imdb} alt="" />
+              <small>86.0/100</small>
+            </span>
+            <span>
+              <img src={tomato} alt="" />
+              <small>97%</small>
+            </span>
           </div>
+          <p>
+            John Wick is on the run after killing a member of the international
+            assassins' guild, and with a $14 million price tag on his head, he
+            is the target of hit men and women everywhere.
+          </p>
+          <Link to="" style={{ width: "200px" }}>
+            <PlayArrowRounded />
+            <span>WATCH TRAILER</span>
+          </Link>
         </div>
       </div>
-    </div>
+    </>
   );
 }
