@@ -19,11 +19,8 @@ const MovieCard = ({ movies, setMovies }) => {
         return (
           <Link to={`/movie/${movie.id}`}>
             <div data-testid="movie-card" key={movie.id}>
-              <div
-                className="hover:bg-slate-300"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <FavoriteBorderIcon className="love-heart hover:cursor-wait" />
+              <div onClick={(e) => e.stopPropagation()}>
+                <FavoriteBorderIcon className="love-heart hover:bg-lime-300 " />
               </div>
 
               <img
