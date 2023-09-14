@@ -57,7 +57,6 @@ const OneMovieCard = () => {
   console.log(movie);
 
   return (
-   
     <>
       <Sidebar />
       <div className=" w-full mx-2 mt-5 lg:ml-80">
@@ -72,12 +71,12 @@ const OneMovieCard = () => {
         <Card sx={{ maxWidth: 900 }}>
           <CardContent>
             <div className="block  md:flex md:flex-row md:justify-between">
-              <div className="block md:flex md:flex-row w-3/4 gap-4">
-                <h5 data-testid="movie-title">{movie.original_title} • </h5>
+              <div className="block md:flex md:flex-row w-3/4 gap-4 ">
+                <h5 data-testid="movie-title">{movie.title} • </h5>
                 <h5 data-testid="movie-release-date">
-                  {date.getUTCFullYear()} • 
+                  {date.getUTCFullYear()} •
                 </h5>
-                <h5 data-testid="movie-runtime">{movie.runtime} • </h5>
+                <h5 data-testid="movie-runtime">{movie.runtime} </h5>
                 {movie.rated}
                 {genres.map((item) => {
                   return (
@@ -94,7 +93,7 @@ const OneMovieCard = () => {
                 <AiOutlineStar className="tx-sm" /> | {movie.popularity}
               </div>
             </div>
-            <div className="flex flex-col md:flex-row">
+            <div className="flex flex-col md:flex-row mt-3">
               <div className="w-full md:w-2/3">
                 <Typography
                   variant="body1"
@@ -126,8 +125,21 @@ const OneMovieCard = () => {
             </div>
           </CardContent>
           <CardActions>
-            <Button size="small">Top rated movie #65</Button>
-            <Button size="small">Awards 9 nominations </Button>
+            <div className="grid grid-col lg:flex lg:flex-row lg:flex-nowrap lg:w-full">
+              <button
+                className="bg-red-600 text-white w-full md:w-1/4 mt-0 px-5 mr-2 mb-2 text-sm hover:border-solid hover:bg-white hover:text-red-600 hover:border-2 hover:border-red-600 font-light px-2 rounded-sm"
+                size="small"
+              >
+                Top rated movie #65
+              </button>
+
+              <button
+                className="bg-transparent mt-0 px-5 w-full md:w-1/4 mr-2 mb-2 text-sm hover:bg-red-700  border-solid border-2 border-red-600 hover:text-white text-red-600 font-light px-2 rounded-sm"
+                size="small"
+              >
+                Awards 9 nominations{" "}
+              </button>
+            </div>
           </CardActions>
         </Card>
       </div>

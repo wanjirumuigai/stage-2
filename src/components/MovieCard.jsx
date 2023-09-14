@@ -13,21 +13,17 @@ const MovieCard = ({ movies, setMovies }) => {
   const navigate = useNavigate();
   const [genres, setGenre] = useState([]);
 
- 
   return (
     <>
       {movies.map((movie) => {
         return (
           <Link to={`/movie/${movie.id}`}>
-            
-            <div
-              
-              data-testid="movie-card"
-              
-              key={movie.id}
-            >
-                <div className="hover:bg-slate-300" onClick={(e) => e.stopPropagation()}>
-              <FavoriteBorderIcon className="love-heart hover:cursor-wait" />
+            <div data-testid="movie-card" key={movie.id}>
+              <div
+                className="hover:bg-slate-300"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <FavoriteBorderIcon className="love-heart hover:cursor-wait" />
               </div>
 
               <img
@@ -36,7 +32,7 @@ const MovieCard = ({ movies, setMovies }) => {
                 width={300}
                 height={450}
               />
-              
+
               <div className="movie__infos">
                 <h2 className="font-bold" data-testid="movie-title">
                   {movie.title}
@@ -49,14 +45,18 @@ const MovieCard = ({ movies, setMovies }) => {
                   <p className="text-xs">{movie.vote_average}</p>
                 </div>
                 <div className="flex flex-row gap-2">
-                 
                   <GiTomato className=" text-xl" />
-                  <p className="text-xs">{Math.round(movie.popularity)}%</p>
+                  <p className="text-xs">80%</p>
                 </div>
               </div>
-              <p data-testid="movie-release-date">{movie.release_date}</p>
+
+              <p data-testid="movie-release-date">
+                Release Date (UTC):
+                {new Date(movie.release_date).getUTCFullYear()}-
+                {new Date(movie.release_date).getUTCMonth() + 1}-
+                {new Date(movie.release_date).getUTCDate()}
+              </p>
             </div>
-            
           </Link>
         );
       })}
