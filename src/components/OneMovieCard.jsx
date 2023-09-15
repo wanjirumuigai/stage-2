@@ -72,11 +72,11 @@ const OneMovieCard = () => {
           <CardContent>
             <div className="block  md:flex md:flex-row md:justify-between">
               <div className="block md:flex md:flex-row w-3/4 gap-4 ">
-                <h5 datatestid="movie-title">{movie.title} • </h5>
-                <h5 datatestid="movie-release-date">
+                <h5 data-testid="movie-title">{movie.title} • </h5>
+                <h5 data-testid="movie-release-date">
                   {date.getUTCFullYear()} •
                 </h5>
-                <h5 datatestid="movie-runtime">{movie.runtime} </h5>
+                <h5 data-testid="movie-runtime">{movie.runtime} </h5>
                 {movie.rated}
                 {genres.map((item) => {
                   return (
@@ -98,7 +98,7 @@ const OneMovieCard = () => {
                 <Typography
                   variant="body1"
                   color="text.secondary"
-                  datatestid="movie-overview"
+                  data-testid="movie-overview"
                 >
                   {movie.overview}
                 </Typography>
